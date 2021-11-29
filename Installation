@@ -1,0 +1,13 @@
+Download and install node js keep all settings as default and place the npm/bin onto environment variables.
+Once installed do  the following
+Run: npm i -g parcel-bundler
+Run: npm init -y
+Run: npm i navigo
+Run: go get golang.org/x/net/http2/h2c
+Run: go get github.com/improbable-eng/grpc-web/go/grpcweb
+Create a proto directory in frontend and copy relative path
+Execute: protoc .\proto\service.proto --js_out=import_style=commonjs:./frontend/proto --grpc-web_out=import_style=commonjs,mode=grpcwebtext:.\frontend\proto
+Run the server directory before checking form functions
+
+Note: Sometimes npm won't bee recognized in powershell so change the terminal to cmd. You might get deprecated message but it's just fine.
+To execute run service.go first then Run "parcel index.html"
