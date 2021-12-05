@@ -1,0 +1,9 @@
+!Sorry if anything is mis-spelled!
+Some important points to  be  followed
+1. In ApplyURI field replace username and passsword with the login credentials to your Mongo Atlas
+2. The given program creates two different collections one for asset and one for details.
+3. The details is supposed to carry details of individuals and asset contains info of related asset info
+4. The eid(employee id) is used as primary key and relates both the collections. The lid(asset id) can be used as foreign key for future enhancements if needed.
+
+!!! If you're wondering what a collection is, it is a table as we say in RDBMS !!!
+$%& MongoDB uses bson to utilize values, some common formats are: bson.M(for mapping), bson.A(for array), bson.D(no filter values). $%& 
