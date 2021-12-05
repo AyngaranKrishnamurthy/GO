@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package proto;
+option go_package="./proto";
+
+message idRequest {
+    string id = 1;
+}
+
+message idResponse {
+    string result = 1;
+}
+
+service DetailService{
+    rpc Details(idRequest) returns (idResponse) {};
+}
+//protoc cleanc/mb/protoc/mb.proto --go_out=plugins=grpc:cleanc/mb/protoc
