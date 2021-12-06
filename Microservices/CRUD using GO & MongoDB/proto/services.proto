@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "./proto";
+
+
+message CreateEmpRequest {
+    string id = 1;          //Blog = Emp && blog = emp
+    string name = 2;       //author_id = name
+    string level = 3;       //title = level
+    string stream = 4; 
+}
+
+message CreateEmpResponse {
+    string result = 1; // will have a emp id
+}
+
+message ReadEmpRequest {
+    string id = 1;
+}
+
+message ReadEmpResponse {
+    string result = 1;
+}
+
+message UpdateEmpRequest {
+    string id = 1;
+    string nname = 2;
+}
+
+message UpdateEmpResponse {
+    string result = 1;
+}
+
+message DeleteEmpRequest {
+    string id = 1;
+}
+
+message DeleteEmpResponse {
+    string result = 1;
+}
+
+/*message ListEmpRequest {
+
+}
+
+message ListEmpResponse {
+    Emp emp = 1;
+}
+*/
+service EmpService {
+    rpc CreateEmp (CreateEmpRequest) returns (CreateEmpResponse);
+    rpc ReadEmp (ReadEmpRequest) returns (ReadEmpResponse); // return NOT_FOUND if not found
+    rpc UpdateEmp (UpdateEmpRequest) returns (UpdateEmpResponse); // return NOT_FOUND if not found
+    rpc DeleteEmp (DeleteEmpRequest) returns (DeleteEmpResponse); // return NOT_FOUND if not found
+    //rpc ListEmp (ListEmpRequest) returns (stream ListEmpResponse);
+}
+
+//protoc proto/services.proto --go_out=plugins=grpc:.
+//protoc proto/services.proto --js_out=import_style=commonjs:.\frontend --grpc-web_out=import_style=commonjs,mode=grpcwebtext:.\frontend
