@@ -5,13 +5,14 @@ go 1.17
 require (
 	github.com/improbable-eng/grpc-web v0.15.0
 	go.mongodb.org/mongo-driver v1.8.0
-	golang.org/x/net v0.0.0-20211205041911-012df41ee64c
+	golang.org/x/net v0.0.0-20211206223403-eba003a116a9
 	google.golang.org/grpc v1.42.0
 )
 
 require (
 	github.com/cenkalti/backoff/v4 v4.1.1 // indirect
 	github.com/desertbit/timer v0.0.0-20180107155436-c41aec40b27f // indirect
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/go-stack/stack v1.8.0 // indirect
 	github.com/golang/protobuf v1.5.0 // indirect
 	github.com/golang/snappy v0.0.1 // indirect

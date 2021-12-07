@@ -13,7 +13,7 @@ message CreateEmpRequest {
 }
 
 message CreateEmpResponse {
-    string result = 1; // will have a emp id
+    string Token = 1; // will have a emp id
 }
 
 message ReadEmpRequest {
@@ -21,7 +21,7 @@ message ReadEmpRequest {
 }
 
 message ReadEmpResponse {
-    string result = 1;
+    string Token = 1;
 }
 
 message UpdateEmpRequest {
@@ -30,7 +30,7 @@ message UpdateEmpRequest {
 }
 
 message UpdateEmpResponse {
-    string result = 1;
+    string Token = 1;
 }
 
 message DeleteEmpRequest {
@@ -38,7 +38,18 @@ message DeleteEmpRequest {
 }
 
 message DeleteEmpResponse {
-    string result = 1;
+    string Token = 1;
+}
+
+message AuthUserRequest{
+    string Token = 1; 
+}
+
+message AuthUserResponse{
+    string eid = 1;
+    string Empname = 2;
+    string Level =3;
+    string Stream = 4;
 }
 
 /*message ListEmpRequest {
@@ -51,9 +62,10 @@ message ListEmpResponse {
 */
 service EmpService {
     rpc CreateEmp (CreateEmpRequest) returns (CreateEmpResponse);
-    rpc ReadEmp (ReadEmpRequest) returns (ReadEmpResponse); // return NOT_FOUND if not found
-    rpc UpdateEmp (UpdateEmpRequest) returns (UpdateEmpResponse); // return NOT_FOUND if not found
-    rpc DeleteEmp (DeleteEmpRequest) returns (DeleteEmpResponse); // return NOT_FOUND if not found
+    rpc ReadEmp (ReadEmpRequest) returns (ReadEmpResponse);
+    rpc UpdateEmp (UpdateEmpRequest) returns (UpdateEmpResponse);
+    rpc DeleteEmp (DeleteEmpRequest) returns (DeleteEmpResponse); 
+    rpc AuthUser(AuthUserRequest) returns (AuthUserResponse);
     //rpc ListEmp (ListEmpRequest) returns (stream ListEmpResponse);
 }
 

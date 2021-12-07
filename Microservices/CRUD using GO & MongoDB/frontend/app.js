@@ -1,5 +1,5 @@
 import Navigo from "navigo";
-import{ EmpServiceClient, CreateEmpRequest, ReadEmpRequest, UpdateEmpRequest, DeleteEmpRequest} from './proto/services_grpc_web_pb'
+import{ EmpServiceClient,AuthUserRequest, CreateEmpRequest, ReadEmpRequest, UpdateEmpRequest, DeleteEmpRequest} from './proto/services_grpc_web_pb'
 
 
 const router = new Navigo
@@ -10,6 +10,8 @@ router
         document.body.innerHTML = ""
         const homeDiv = document.createElement("div")
         homeDiv.classList.add("home-div")
+        const user = localStorage.getItem("user")
+        if (user == "null"){
 
         const buttonContainer = document.createElement("div")
         buttonContainer.classList.add("button-container")
@@ -43,6 +45,16 @@ router
         buttonContainer.appendChild(deleteButton)
 
         homeDiv.appendChild(buttonContainer)
+    }else{
+        const authText = document.createElement("user")
+        authText.classList.add("auth-text")
+        authText.innerText = `${user} one employee`
+        const crudBtn = document.createElement("button")
+        crudBtn.innerText = "CRUD"
+        homeDiv.appendChild(authText)
+
+        
+    }
         document.body.appendChild(homeDiv)
     })
     .on("/C",function(){
@@ -110,18 +122,24 @@ router
 
         createForm.addEventListener('submit',event =>{
             event.preventDefault()
-            const req = new CreateEmpRequest()
+            let req = new CreateEmpRequest()
             req.setId(idInput.value)
             req.setName(nameInput.value)
             req.setLevel(levelInput.value)
             req.setStream(streamInput.value)
             EmpClient.createEmp(req, {},(err,res) => {
                 if (err) return alert(err.message)
-                console.log(res.getResult())
-                
-                alert(`Created an employee collection`)
-
-                router.navigate("/crud-s")
+                //console.log(res.getResult())
+                localStorage.setItem('token', res.getToken())
+                req = new AuthUserRequest()
+                req.setToken(res.getToken())
+                EmpClient.authUser(req, {} , (err,res)=>{
+                    if (err) return alert (err.message)
+                    const user = {eid: res.getEid(), empname: res.getEmpname(), Level: res.getLevel(), Stream: res.getStream()}
+                    localStorage.setItem('user', JSON.stringify(user))
+                    alert(`Created Employee ${user.empname}`)
+                    router.navigate("crud-s")
+                })
             })
         })
 
@@ -159,13 +177,21 @@ router
 
         readForm.addEventListener('submit',event =>{
             event.preventDefault()
-            const req = new ReadEmpRequest()
+            let req = new ReadEmpRequest()
             req.setId(idInput.value)
             EmpClient.readEmp(req, {},(err,res) => {
                 if (err) return alert(err.messssage)
-                console.log(res.getResult())
-                alert("Data retrieved successfully")
-                router.navigate("/crud-s")
+                //console.log(res.getResult())
+                localStorage.setItem('token', res.getToken())
+                req = new AuthUserRequest()
+                req.setToken(res.getToken())
+                EmpClient.authUser(req, {} , (err,res)=>{
+                    if (err) return alert (err.message)
+                    const user = {eid: res.getEid(), empname: res.getEmpname(), Level: res.getLevel(), Stream: res.getStream()}
+                    localStorage.setItem('user', JSON.stringify(user))
+                    alert(`Employee Details => ID: ${user.eid} | Name: ${user.empname} | Level: ${user.Level} | Stream: ${user.Stream}`)
+                    router.navigate("crud-s")
+                })
             })
         })
 
@@ -222,9 +248,16 @@ router
             req.setNname(newNameInput.value)
             EmpClient.updateEmp(req, {},(err,res) => {
                 if (err) return alert(err.messssage)
-                console.log(res.getResult())
-                alert("Updated an employee collection")
-                router.navigate("/crud-s")
+                localStorage.setItem('token', res.getToken())
+                req = new AuthUserRequest()
+                req.setToken(res.getToken())
+                EmpClient.authUser(req, {} , (err,res)=>{
+                    if (err) return alert (err.message)
+                    const user = {eid: res.getEid(), empname: res.getEmpname(), Level: res.getLevel(), Stream: res.getStream()}
+                    localStorage.setItem('user', JSON.stringify(user))
+                    alert(`Updated Employee ID: ${user.eid}`)
+                    router.navigate("crud-s")
+                })
             })
         })
 
@@ -267,10 +300,16 @@ router
             const req = new DeleteEmpRequest()
             req.setId(idInput.value)
             EmpClient.deleteEmp(req, {},(err,res) => {
-                if (err) return alert(err.messssage)
-                console.log(res.getResult())
-                alert("Deleted an employee collection")
-                router.navigate("/crud-s")
+                localStorage.setItem('token', res.getToken())
+                req = new AuthUserRequest()
+                req.setToken(res.getToken())
+                EmpClient.authUser(req, {} , (err,res)=>{
+                    if (err) return alert (err.message)
+                    const user = {eid: res.getEid(), empname: res.getEmpname(), Level: res.getLevel(), Stream: res.getStream()}
+                    localStorage.setItem('user', JSON.stringify(user))
+                    alert(`Deleted Employee ID: ${user.eid}`)
+                    router.navigate("crud-s")
+                })
             })
         })
 
@@ -279,31 +318,6 @@ router
         document.body.appendChild(delDiv)
         
         
-    })
-
-    .on("/crud-s",function(){
-        document.body.innerHTML = ""
-        const crudDiv = document.createElement("div")
-        crudDiv.classList.add("home-div")
-
-        const buttonContainer = document.createElement("div")
-        buttonContainer.classList.add("button-container")
-        
-        const crudLabel = document.createElement('h1')
-        crudLabel.innerText = "Execution was Successful"
-        buttonContainer.appendChild(crudLabel)
-
-        const crudButton = document.createElement("button")
-        crudButton.innerText = "CRUD"
-        crudButton.addEventListener('click', () => {
-            router.navigate("/crud")
-        })
-        buttonContainer.appendChild(crudButton)
-
-        
-
-        crudDiv.appendChild(buttonContainer)
-        document.body.appendChild(crudDiv)
     })
 
     .resolve()

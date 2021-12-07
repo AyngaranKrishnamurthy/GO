@@ -26,6 +26,7 @@ type crudServer struct{}
 var server crudServer
 var detailsFiltered []bson.M
 var nname string
+var user global.User
 
 func (crudServer) CreateEmp(_ context.Context, in *proto.CreateEmpRequest) (*proto.CreateEmpResponse, error) {
 	id, name, level, stream := in.GetId(), in.GetName(), in.GetLevel(), in.GetStream()
@@ -37,24 +38,16 @@ func (crudServer) CreateEmp(_ context.Context, in *proto.CreateEmpRequest) (*pro
 		log.Println("Error Inserting user :", err.Error())
 		return &proto.CreateEmpResponse{}, errors.New("Something didn't go as planned")
 	}
-	return &proto.CreateEmpResponse{}, nil
+	return &proto.CreateEmpResponse{Token: newUser.GetToken()}, nil
 }
 
 func (crudServer) ReadEmp(_ context.Context, in *proto.ReadEmpRequest) (*proto.ReadEmpResponse, error) {
 	id := in.GetId()
 	ctx, cancel := global.NewDBContext(5 * time.Second)
 	defer cancel()
-	filterCursor, err := global.DB.Collection("user").Find(ctx, bson.M{"eid": id})
-	if err != nil {
-		log.Fatalf("Could not retireve")
-	}
+	global.DB.Collection("user").FindOne(ctx, bson.M{"eid": id}).Decode(&user)
 
-	if err := filterCursor.All(ctx, &detailsFiltered); err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println(detailsFiltered)
-	//res := detailsFiltered
-	return &proto.ReadEmpResponse{}, nil
+	return &proto.ReadEmpResponse{Token: user.GetToken()}, nil
 }
 
 func (crudServer) UpdateEmp(_ context.Context, in *proto.UpdateEmpRequest) (*proto.UpdateEmpResponse, error) {
@@ -88,6 +81,12 @@ func (crudServer) DeleteEmp(_ context.Context, in *proto.DeleteEmpRequest) (*pro
 	}
 	fmt.Printf("Deleted %v Documents! \n", res.DeletedCount)
 	return &proto.DeleteEmpResponse{}, nil
+}
+
+func (crudServer) AuthUser(_ context.Context, in *proto.AuthUserRequest) (*proto.AuthUserResponse, error) {
+	token := in.GetToken()
+	user := global.UserFromToken(token)
+	return &proto.AuthUserResponse{Eid: user.EID, Empname: user.Empname, Level: user.Level, Stream: user.Stream}, nil
 }
 
 func main() {

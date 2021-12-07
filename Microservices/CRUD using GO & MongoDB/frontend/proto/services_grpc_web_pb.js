@@ -314,5 +314,66 @@ proto.proto.EmpServicePromiseClient.prototype.deleteEmp =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.proto.AuthUserRequest,
+ *   !proto.proto.AuthUserResponse>}
+ */
+const methodDescriptor_EmpService_AuthUser = new grpc.web.MethodDescriptor(
+  '/proto.EmpService/AuthUser',
+  grpc.web.MethodType.UNARY,
+  proto.proto.AuthUserRequest,
+  proto.proto.AuthUserResponse,
+  /**
+   * @param {!proto.proto.AuthUserRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.proto.AuthUserResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.proto.AuthUserRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.proto.AuthUserResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.proto.AuthUserResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.proto.EmpServiceClient.prototype.authUser =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/proto.EmpService/AuthUser',
+      request,
+      metadata || {},
+      methodDescriptor_EmpService_AuthUser,
+      callback);
+};
+
+
+/**
+ * @param {!proto.proto.AuthUserRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.proto.AuthUserResponse>}
+ *     Promise that resolves to the response
+ */
+proto.proto.EmpServicePromiseClient.prototype.authUser =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/proto.EmpService/AuthUser',
+      request,
+      metadata || {},
+      methodDescriptor_EmpService_AuthUser);
+};
+
+
 module.exports = proto.proto;
 
