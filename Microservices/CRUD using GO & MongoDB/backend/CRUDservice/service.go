@@ -55,7 +55,7 @@ func (crudServer) UpdateEmp(_ context.Context, in *proto.UpdateEmpRequest) (*pro
 	nname := in.GetNname()
 	ctx, cancel := global.NewDBContext(5 * time.Second)
 	defer cancel()
-	result, err := global.DB.Collection("user").UpdateOne( //Update One document
+	res, err := global.DB.Collection("user").UpdateOne( //Update One document
 		ctx,
 		bson.M{"eid": id},
 		bson.D{
@@ -65,8 +65,8 @@ func (crudServer) UpdateEmp(_ context.Context, in *proto.UpdateEmpRequest) (*pro
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("Updated %v Documents! \n", result.ModifiedCount)
-	return &proto.UpdateEmpResponse{}, nil
+	fmt.Printf("Updated %v Documents! \n", res.ModifiedCount)
+	return &proto.UpdateEmpResponse{Token: user.GetToken()}, nil
 }
 
 func (crudServer) DeleteEmp(_ context.Context, in *proto.DeleteEmpRequest) (*proto.DeleteEmpResponse, error) {
@@ -80,7 +80,7 @@ func (crudServer) DeleteEmp(_ context.Context, in *proto.DeleteEmpRequest) (*pro
 		log.Fatal(err)
 	}
 	fmt.Printf("Deleted %v Documents! \n", res.DeletedCount)
-	return &proto.DeleteEmpResponse{}, nil
+	return &proto.DeleteEmpResponse{Token: user.GetToken()}, nil
 }
 
 func (crudServer) AuthUser(_ context.Context, in *proto.AuthUserRequest) (*proto.AuthUserResponse, error) {

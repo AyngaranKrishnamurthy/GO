@@ -230,8 +230,8 @@ router
         UpdForm.appendChild(submitBtn)
 
         UpdForm.addEventListener('submit',event =>{
-            event.preventDefault()
-            const req = new UpdateEmpRequest()
+            event.preventDefault() 
+            let req = new UpdateEmpRequest()
             req.setId(idInput.value)
             req.setNname(newNameInput.value)
             EmpClient.updateEmp(req, {},(err,res) => {
@@ -241,9 +241,15 @@ router
                 req.setToken(res.getToken())
                 EmpClient.authUser(req, {} , (err,res)=>{
                     if (err) return alert (err.message)
+
                     const user = {eid: res.getEid(), empname: res.getEmpname(), Level: res.getLevel(), Stream: res.getStream()}
                     localStorage.setItem('user', JSON.stringify(user))
-                    alert(`Updated Employee ID: ${user.eid}`)
+                    if(user.eid==""){
+                        alert(`Employee ID: ${idInput.value} Updated Successfully`)                        
+                    }else{ 
+                        alert(`Employee ID doesn't exist`)
+                                              
+                    }
                     router.navigate("/crud")
                 })
             })
@@ -285,7 +291,7 @@ router
 
         delForm.addEventListener('submit',event =>{
             event.preventDefault()
-            const req = new DeleteEmpRequest()
+            let req = new DeleteEmpRequest()
             req.setId(idInput.value)
             EmpClient.deleteEmp(req, {},(err,res) => {
                 localStorage.setItem('token', res.getToken())

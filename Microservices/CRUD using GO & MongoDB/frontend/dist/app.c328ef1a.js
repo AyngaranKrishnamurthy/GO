@@ -4938,8 +4938,6 @@ var _services_grpc_web_pb = require("./proto/services_grpc_web_pb");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
-
 var router = new _navigo.default();
 var EmpClient = new _services_grpc_web_pb.EmpServiceClient('http://localhost:9001');
 router.on("/crud", function () {
@@ -5141,7 +5139,7 @@ router.on("/crud", function () {
     EmpClient.updateEmp(req, {}, function (err, res) {
       if (err) return alert(err.messssage);
       localStorage.setItem('token', res.getToken());
-      new _services_grpc_web_pb.AuthUserRequest(), _readOnlyError("req");
+      req = new _services_grpc_web_pb.AuthUserRequest();
       req.setToken(res.getToken());
       EmpClient.authUser(req, {}, function (err, res) {
         if (err) return alert(err.message);
@@ -5152,7 +5150,13 @@ router.on("/crud", function () {
           Stream: res.getStream()
         };
         localStorage.setItem('user', JSON.stringify(user));
-        alert("Updated Employee ID: ".concat(user.eid));
+
+        if (user.eid == "") {
+          alert("Employee ID: ".concat(idInput.value, " Updated Successfully"));
+        } else {
+          alert("Employee ID doesn't exist");
+        }
+
         router.navigate("/crud");
       });
     });
@@ -5186,7 +5190,7 @@ router.on("/crud", function () {
     req.setId(idInput.value);
     EmpClient.deleteEmp(req, {}, function (err, res) {
       localStorage.setItem('token', res.getToken());
-      new _services_grpc_web_pb.AuthUserRequest(), _readOnlyError("req");
+      req = new _services_grpc_web_pb.AuthUserRequest();
       req.setToken(res.getToken());
       EmpClient.authUser(req, {}, function (err, res) {
         if (err) return alert(err.message);
@@ -5233,7 +5237,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56081" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63299" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

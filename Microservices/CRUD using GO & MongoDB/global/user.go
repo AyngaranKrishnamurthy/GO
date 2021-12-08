@@ -16,6 +16,9 @@ type User struct {
 	Stream  string             `bson:"stream"`
 }
 
+//NilUser when no user found
+var NilUser User
+
 //GetToken returns the JSON's web tokens
 func (u User) GetToken() string {
 	byteSlc, _ := json.Marshal(u)

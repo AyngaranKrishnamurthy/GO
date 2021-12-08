@@ -52,21 +52,12 @@ message AuthUserResponse{
     string Stream = 4;
 }
 
-/*message ListEmpRequest {
-
-}
-
-message ListEmpResponse {
-    Emp emp = 1;
-}
-*/
 service EmpService {
     rpc CreateEmp (CreateEmpRequest) returns (CreateEmpResponse);
     rpc ReadEmp (ReadEmpRequest) returns (ReadEmpResponse);
     rpc UpdateEmp (UpdateEmpRequest) returns (UpdateEmpResponse);
     rpc DeleteEmp (DeleteEmpRequest) returns (DeleteEmpResponse); 
     rpc AuthUser(AuthUserRequest) returns (AuthUserResponse);
-    //rpc ListEmp (ListEmpRequest) returns (stream ListEmpResponse);
 }
 
 //protoc proto/services.proto --go_out=plugins=grpc:.
