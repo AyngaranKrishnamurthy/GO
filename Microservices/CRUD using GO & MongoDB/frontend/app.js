@@ -11,8 +11,6 @@ router
         const homeDiv = document.createElement("div")
         homeDiv.classList.add("home-div")
         const user = localStorage.getItem("user")
-        if (user == "null"){
-
         const buttonContainer = document.createElement("div")
         buttonContainer.classList.add("button-container")
 
@@ -45,16 +43,6 @@ router
         buttonContainer.appendChild(deleteButton)
 
         homeDiv.appendChild(buttonContainer)
-    }else{
-        const authText = document.createElement("user")
-        authText.classList.add("auth-text")
-        authText.innerText = `${user} one employee`
-        const crudBtn = document.createElement("button")
-        crudBtn.innerText = "CRUD"
-        homeDiv.appendChild(authText)
-
-        
-    }
         document.body.appendChild(homeDiv)
     })
     .on("/C",function(){
@@ -138,7 +126,7 @@ router
                     const user = {eid: res.getEid(), empname: res.getEmpname(), Level: res.getLevel(), Stream: res.getStream()}
                     localStorage.setItem('user', JSON.stringify(user))
                     alert(`Created Employee ${user.empname}`)
-                    router.navigate("crud-s")
+                    router.navigate("/crud")
                 })
             })
         })
@@ -190,7 +178,7 @@ router
                     const user = {eid: res.getEid(), empname: res.getEmpname(), Level: res.getLevel(), Stream: res.getStream()}
                     localStorage.setItem('user', JSON.stringify(user))
                     alert(`Employee Details => ID: ${user.eid} | Name: ${user.empname} | Level: ${user.Level} | Stream: ${user.Stream}`)
-                    router.navigate("crud-s")
+                    router.navigate("/crud")
                 })
             })
         })
@@ -256,7 +244,7 @@ router
                     const user = {eid: res.getEid(), empname: res.getEmpname(), Level: res.getLevel(), Stream: res.getStream()}
                     localStorage.setItem('user', JSON.stringify(user))
                     alert(`Updated Employee ID: ${user.eid}`)
-                    router.navigate("crud-s")
+                    router.navigate("/crud")
                 })
             })
         })
@@ -308,7 +296,7 @@ router
                     const user = {eid: res.getEid(), empname: res.getEmpname(), Level: res.getLevel(), Stream: res.getStream()}
                     localStorage.setItem('user', JSON.stringify(user))
                     alert(`Deleted Employee ID: ${user.eid}`)
-                    router.navigate("crud-s")
+                    router.navigate("/crud")
                 })
             })
         })

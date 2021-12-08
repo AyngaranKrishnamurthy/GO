@@ -4947,44 +4947,33 @@ router.on("/crud", function () {
   var homeDiv = document.createElement("div");
   homeDiv.classList.add("home-div");
   var user = localStorage.getItem("user");
-
-  if (user == "null") {
-    var buttonContainer = document.createElement("div");
-    buttonContainer.classList.add("button-container");
-    var createButton = document.createElement("button");
-    createButton.innerText = "Create";
-    createButton.addEventListener('click', function () {
-      router.navigate("/C");
-    });
-    buttonContainer.appendChild(createButton);
-    var readButton = document.createElement("button");
-    readButton.innerText = "Retrieve";
-    readButton.addEventListener('click', function () {
-      router.navigate("/R");
-    });
-    buttonContainer.appendChild(readButton);
-    var updateButton = document.createElement("button");
-    updateButton.innerText = "Update";
-    updateButton.addEventListener('click', function () {
-      router.navigate("/U");
-    });
-    buttonContainer.appendChild(updateButton);
-    var deleteButton = document.createElement("button");
-    deleteButton.innerText = "Delete";
-    deleteButton.addEventListener('click', function () {
-      router.navigate("/D");
-    });
-    buttonContainer.appendChild(deleteButton);
-    homeDiv.appendChild(buttonContainer);
-  } else {
-    var authText = document.createElement("user");
-    authText.classList.add("auth-text");
-    authText.innerText = "".concat(user, " one employee");
-    var crudBtn = document.createElement("button");
-    crudBtn.innerText = "CRUD";
-    homeDiv.appendChild(authText);
-  }
-
+  var buttonContainer = document.createElement("div");
+  buttonContainer.classList.add("button-container");
+  var createButton = document.createElement("button");
+  createButton.innerText = "Create";
+  createButton.addEventListener('click', function () {
+    router.navigate("/C");
+  });
+  buttonContainer.appendChild(createButton);
+  var readButton = document.createElement("button");
+  readButton.innerText = "Retrieve";
+  readButton.addEventListener('click', function () {
+    router.navigate("/R");
+  });
+  buttonContainer.appendChild(readButton);
+  var updateButton = document.createElement("button");
+  updateButton.innerText = "Update";
+  updateButton.addEventListener('click', function () {
+    router.navigate("/U");
+  });
+  buttonContainer.appendChild(updateButton);
+  var deleteButton = document.createElement("button");
+  deleteButton.innerText = "Delete";
+  deleteButton.addEventListener('click', function () {
+    router.navigate("/D");
+  });
+  buttonContainer.appendChild(deleteButton);
+  homeDiv.appendChild(buttonContainer);
   document.body.appendChild(homeDiv);
 }).on("/C", function () {
   document.body.innerHTML = "";
@@ -5060,7 +5049,7 @@ router.on("/crud", function () {
         };
         localStorage.setItem('user', JSON.stringify(user));
         alert("Created Employee ".concat(user.empname));
-        router.navigate("crud-s");
+        router.navigate("/crud");
       });
     });
   });
@@ -5107,7 +5096,7 @@ router.on("/crud", function () {
         };
         localStorage.setItem('user', JSON.stringify(user));
         alert("Employee Details => ID: ".concat(user.eid, " | Name: ").concat(user.empname, " | Level: ").concat(user.Level, " | Stream: ").concat(user.Stream));
-        router.navigate("crud-s");
+        router.navigate("/crud");
       });
     });
   });
@@ -5164,7 +5153,7 @@ router.on("/crud", function () {
         };
         localStorage.setItem('user', JSON.stringify(user));
         alert("Updated Employee ID: ".concat(user.eid));
-        router.navigate("crud-s");
+        router.navigate("/crud");
       });
     });
   });
@@ -5209,7 +5198,7 @@ router.on("/crud", function () {
         };
         localStorage.setItem('user', JSON.stringify(user));
         alert("Deleted Employee ID: ".concat(user.eid));
-        router.navigate("crud-s");
+        router.navigate("/crud");
       });
     });
   });
@@ -5244,7 +5233,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55642" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56081" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
