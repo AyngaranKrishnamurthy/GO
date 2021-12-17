@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div.crud-div {
+  margin: 20px auto;
+  padding: 30px;
+  text-align: center;
+  background-color: #e8e8e8;
+  width: 95%;
+  max-width: 400px;
+  border-radius: 12px;
+}
+div.crud-div .error {
+  color: rgba(223, 16, 16, 0.712);
+  font-size: 10pt;
+  font-family: Arial, Helvetica, sans-serif;
+}
+div.crud-div input {
+  padding: 5px;
+  margin: 10px;
+  border-radius: 4px;
+  border: none;
+}
+div.crud-div input:focus {
+  outline: none;
+  border: 2px solid rgba(25, 174, 255, 0.3);
+}
+div.crud-div label.input-label {
+  display: block;
+  margin-top: 20px;
+}
+div.crud-div button {
+  cursor: pointer;
+  padding: 8px 25px;
+  margin: 10px auto;
+  display: block;
+  border: none;
+  border-radius: 5px;
+  background-color: #06ffea;
+  color: rgba(0, 0, 0, 0.692);
+  font-weight: bold;
+  font-size: 10pt;
+}
+
+div.home-div div.button-container {
+  padding: 30px;
+  width: 95%;
+  margin: 40px auto;
+  max-width: 500px;
+  display: flex;
+  flex-direction: row;
+  background-color: #e8e8e8;
+  border-radius: 14px;
+  justify-content: space-around;
+}
+div.home-div div.button-container button {
+  cursor: pointer;
+  padding: 8px 25px;
+  margin: 10px auto;
+  display: block;
+  border: none;
+  border-radius: 5px;
+  background-color: #06ffea;
+  color: rgba(0, 0, 0, 0.692);
+  font-weight: bold;
+  font-size: 10pt;
+}
+div.home-div div.button-container app-link {
+  margin: 100px auto;
+  padding: 8px 25px;
+}
+div.home-div div.auth-text {
+  padding: 30px;
+  width: 95%;
+  margin: 25px auto;
+  max-width: 500px;
+  background-color: #e8e8e8;
+  border-radius: 20px;
+}
+div.home-div div.auth-text link-text {
+  margin: 30px auto;
+  color: aquamarine;
+}
+div.home-div div.auth-text button {
+  cursor: pointer;
+  display: block;
+  margin: 15px auto;
+  width: 40%;
+  padding: 10px 20px;
+  background-color: #18aeff;
+  border-radius: 6px;
+  border: none;
+  color: white;
+}
+
+div.auth-text {
+  padding: 30px;
+  width: 95%;
+  margin: 25px auto;
+  max-width: 500px;
+  background-color: #e8e8e8;
+  border-radius: 20px;
+}
+div.auth-text link-text {
+  margin: 30px auto;
+  color: aquamarine;
+}
+div.auth-text button {
+  cursor: pointer;
+  display: block;
+  margin: 15px auto;
+  width: 40%;
+  padding: 10px 20px;
+  background-color: #18aeff;
+  border-radius: 6px;
+  border: none;
+  color: white;
+}
+
+/*# sourceMappingURL=/app.55bab2ff.css.map */

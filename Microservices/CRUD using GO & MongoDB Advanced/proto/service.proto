@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "./proto";
+
+message CreateRequest {
+    string Eid = 1;
+    string Empname = 2;
+    int32 Elevel = 3;
+    string Estream = 4;
+}
+
+message RetrieveRequest {
+    string Eid = 1;
+}
+
+message UpdateRequest {
+    string Eid = 1;
+    string Empname1 = 2;
+}
+
+message DeleteRequest {
+    string Eid = 1;
+}
+
+message AuthResponse {
+    string Token = 1;
+}
+
+message EidUsedRequest{ //UsernameUsed
+    string Eid = 1;     //username
+}
+
+message UsedResponse{
+    bool used = 1;
+}
+
+message AuthUserRequest{
+    string Token = 1; 
+}
+
+message AuthUserResponse{
+    string Eid = 1;
+    string Empname = 2;
+    int32 Elevel =3;
+    string Estream =4;
+}
+
+service crudService {
+     rpc Create(CreateRequest) returns (AuthResponse);
+     rpc Retrieve(RetrieveRequest) returns (AuthResponse);
+     rpc Update(UpdateRequest) returns (AuthResponse);
+     rpc Delete(DeleteRequest) returns (AuthResponse);
+     rpc EidUsed(EidUsedRequest) returns (UsedResponse);    //chk if given eid exists
+     rpc AuthUser(AuthUserRequest) returns (AuthUserResponse); //return db values
+ }
+
+ //protoc proto/service.proto --go_out=plugins=grpc:.
+ //protoc proto/service.proto --js_out=import_style=commonjs:.\frontend --grpc-web_out=import_style=commonjs,mode=grpcwebtext:.\frontend
