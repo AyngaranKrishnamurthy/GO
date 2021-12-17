@@ -1,7 +1,7 @@
 package global
 
 const (
-	dburi       = "mongodb+srv://standard:example@cluster0.ut86q.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+	dburi       = "mongodb+srv:/<username>:<password>@cluster0.ut86q.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 	dbname      = "Employee"
 	performance = 100
 )
