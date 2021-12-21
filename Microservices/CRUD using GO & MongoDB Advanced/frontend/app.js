@@ -227,10 +227,56 @@ router
             
             const buttonContainer = document.createElement("div")
             buttonContainer.classList.add("button-container")
-    
-            const crudLabel = document.createElement('h6')
-            crudLabel.innerText = `Employee Details: ${user.eid} | ${user.empname} | ${user.elevel} | ${user.estream}`
-            buttonContainer.appendChild(crudLabel)
+
+            //20/12
+            let table = document.createElement('table');
+            table.classList.add("table-div");
+            let thead = document.createElement('thead');
+            let tbody = document.createElement('tbody');
+
+            table.appendChild(thead);
+            table.appendChild(tbody);
+
+            // Adding the entire table to the body tag
+            buttonContainer.appendChild(table);
+
+            // Creating and adding data to first row of the table
+            let row_1 = document.createElement('tr');
+            let heading_1 = document.createElement('th');
+            heading_1.innerHTML = "EID";
+            let heading_2 = document.createElement('th');
+            heading_2.innerHTML = "Name";
+            let heading_3 = document.createElement('th');
+            heading_3.innerHTML = "Level";
+            let heading_4 = document.createElement('th');
+            heading_4.innerHTML = "Stream";
+
+            row_1.appendChild(heading_1);
+            row_1.appendChild(heading_2);
+            row_1.appendChild(heading_3);
+            row_1.appendChild(heading_4);
+            thead.appendChild(row_1);
+
+
+            // Creating and adding data to second row of the table
+            let row_2 = document.createElement('tr');
+            let row_2_data_1 = document.createElement('td');
+            row_2_data_1.innerHTML = `${user.eid}`;
+            let row_2_data_2 = document.createElement('td');
+            row_2_data_2.innerHTML = `${user.empname}`;
+            let row_2_data_3 = document.createElement('td');
+            row_2_data_3.innerHTML = `${user.elevel}`;
+            let row_2_data_4 = document.createElement('td');
+            row_2_data_4.innerHTML = `${user.estream}`;
+
+            row_2.appendChild(row_2_data_1);
+            row_2.appendChild(row_2_data_2);
+            row_2.appendChild(row_2_data_3);
+            row_2.appendChild(row_2_data_4);
+            tbody.appendChild(row_2);
+
+            //20/12
+
     
             const updBtn = document.createElement("button")
                 updBtn.innerText = "Update"

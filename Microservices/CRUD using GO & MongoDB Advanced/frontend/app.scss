@@ -9,7 +9,7 @@
 
 div.crud-div{
     margin: 20px auto;
-    padding: 30px;
+    padding: 50px ;
     text-align: center;
     background-color: #e8e8e8;
     width: 95%;
@@ -57,15 +57,16 @@ div.crud-div{
 
 div.home-div {
     div.button-container {
-        padding: 30px;
-        width: 95%;
-        margin: 40px auto;
+        padding: 50px auto;
+        width: 100%;
+        margin: auto auto;
         max-width: 500px;
         display: flex;
         flex-direction: row;
         background-color: #e8e8e8;
         border-radius: 14px;
         justify-content: space-around;
+        align-content: center;
 
         button {
         cursor: pointer;
@@ -139,3 +140,14 @@ div.auth-text{
         color: white ;
     }
 }
+    table{
+        margin: auto;
+        border-collapse: collapse;
+        border-spacing: 0;
+        
+    }
+    th, td{
+        margin: auto;
+        padding: 20px 10px;
+        border: 1px solid #000;
+    }

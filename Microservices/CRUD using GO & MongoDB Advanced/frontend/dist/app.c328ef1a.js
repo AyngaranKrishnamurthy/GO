@@ -5014,10 +5014,47 @@ router.on("/", function () {
   crudDiv.classList.add("crud-div");
   var user = JSON.parse(localStorage.getItem("user"));
   var buttonContainer = document.createElement("div");
-  buttonContainer.classList.add("button-container");
-  var crudLabel = document.createElement('h6');
-  crudLabel.innerText = "Employee Details: ".concat(user.eid, " | ").concat(user.empname, " | ").concat(user.elevel, " | ").concat(user.estream);
-  buttonContainer.appendChild(crudLabel);
+  buttonContainer.classList.add("button-container"); //20/12
+
+  var table = document.createElement('table');
+  table.classList.add("table-div");
+  var thead = document.createElement('thead');
+  var tbody = document.createElement('tbody');
+  table.appendChild(thead);
+  table.appendChild(tbody); // Adding the entire table to the body tag
+
+  buttonContainer.appendChild(table); // Creating and adding data to first row of the table
+
+  var row_1 = document.createElement('tr');
+  var heading_1 = document.createElement('th');
+  heading_1.innerHTML = "EID";
+  var heading_2 = document.createElement('th');
+  heading_2.innerHTML = "Name";
+  var heading_3 = document.createElement('th');
+  heading_3.innerHTML = "Level";
+  var heading_4 = document.createElement('th');
+  heading_4.innerHTML = "Stream";
+  row_1.appendChild(heading_1);
+  row_1.appendChild(heading_2);
+  row_1.appendChild(heading_3);
+  row_1.appendChild(heading_4);
+  thead.appendChild(row_1); // Creating and adding data to second row of the table
+
+  var row_2 = document.createElement('tr');
+  var row_2_data_1 = document.createElement('td');
+  row_2_data_1.innerHTML = "".concat(user.eid);
+  var row_2_data_2 = document.createElement('td');
+  row_2_data_2.innerHTML = "".concat(user.empname);
+  var row_2_data_3 = document.createElement('td');
+  row_2_data_3.innerHTML = "".concat(user.elevel);
+  var row_2_data_4 = document.createElement('td');
+  row_2_data_4.innerHTML = "".concat(user.estream);
+  row_2.appendChild(row_2_data_1);
+  row_2.appendChild(row_2_data_2);
+  row_2.appendChild(row_2_data_3);
+  row_2.appendChild(row_2_data_4);
+  tbody.appendChild(row_2); //20/12
+
   var updBtn = document.createElement("button");
   updBtn.innerText = "Update";
   updBtn.addEventListener('click', function () {
@@ -5142,7 +5179,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60693" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61931" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
