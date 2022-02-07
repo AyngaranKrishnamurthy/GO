@@ -1,0 +1,10 @@
+As the name implies it is a pattern in-between two types to exchange information.
+One of the objective of this design pattern is to avoid tight coupling between objects.
+It will act as the type in charge of exchanging communication between two objects. This way, the communicating objects don't need to know each other and can exchange more freely. The pattern that maintains which objects give the information is the mediator.
+	
+EXAMPLE: 
+    We are going to create an extremely simple arithmetic calculator. The calculator will do two very simple operations: Sum and Subtract.
+	
+ACCEPTANCE CRITERIA:
+	1. Define an operation called Sum that takes a number and adds it to another number.
+	2. Define an operation called Subtract that takes a number and subtracts it to another number.

@@ -1,0 +1,2 @@
+​Reusing an algorithm to create multiple implementations of an interface. 
+It helps us construct complex objects without directly instantiating their struct or writing the logic they require.

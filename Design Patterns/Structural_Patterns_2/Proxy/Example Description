@@ -1,0 +1,5 @@
+We are going to create a remote proxy, which is going to be a cache of objects before ccessing a database.
+Let's imagine that we have a database with many users but instead of accessing the database each time we want information about a user, 
+we will have a FIFO stack of users in proxy pattern.
+ 
+Note: We are going to wrap an imaginary database, represented by a slice , with our proxy pattern.

@@ -1,0 +1,14 @@
+It can be used for Event-Driven Architecture
+It is directly related to FSM(Finite State Machines). In simple terms FSM is something that has one or more states and travels between them to execute some behavior.
+A light switch is a great example of FSM, it has two states ON and OFF. One state transits to other and vice-versa. This is similar to how state pattern works.
+	
+EXAMPLE:
+    A small guess the number game. We are going to develop a very simple game that uses FSM. This is a number guessing game. The idea is simple we will have to guess a number between 0-10 and we will have a certain 	
+	number of tries if we can't guess within the provided time we will lose the game. We will also allocate difficulty level determined by the number of times user gets to guess.
+	
+ACCEPTANCE CRITERIA:
+	1. The game will ask the player about the number of times he will have before losing the came(difficulty).
+	2. The number to guess must be between 0 and 10
+	3. Every time player enters a number to guess the number of retries is reduced by 1.
+	4. If number of retries is 0 and the player has not guessed the correct number the player has lost.
+	5. If player guesses the number right the player wins.

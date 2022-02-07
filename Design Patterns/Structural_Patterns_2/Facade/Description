@@ -1,0 +1,2 @@
+=> In Architectural terms a Facade is a front wall that hides the rooms and corridors of a building.
+=> The Facade pattern shields the code from unwanted access, order some calls and hide some complexity scope from the user.

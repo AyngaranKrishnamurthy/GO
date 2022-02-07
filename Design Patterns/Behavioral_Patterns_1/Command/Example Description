@@ -1,0 +1,9 @@
+Example 1:
+    We will put some information into a command implementer and we will have a queue. We will create many instances of a type 
+    implementing a command pattern and we will pass them to a queueand will store the commands until three of them are in the 
+    queue, at which time it will process them.
+
+    ACCEPTANCE CRITERIA:
+        1. We need a constructor of console printing commands. When using this constructor with a *String, it will return a command 
+        that will print it. In this case, the handler is inside the command that acts as a box and as a handler.
+        2. We need a data structurethat stores incoming commands in a queueand prints them once the queue reaches the length of three.

@@ -1,0 +1,5 @@
+=> It is similar to strategy design pattern but with key differences.
+=> In strategy pattern we focus on changing algorithms, in command pattern we focus on the invocation of something 
+or on the abstraction of some type.
+=> The command pattern, as the name suggests, is used when we want to create and execute “commands”. 
+Different commands have their own implementation, but have the same steps for execution.

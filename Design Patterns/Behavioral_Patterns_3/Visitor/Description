@@ -1,0 +1,6 @@
+Let's you seperate algorithm from the objects on which they operate.
+In this pattern we will delegate some logic of the object's type to an external object called as visitor, that will visit our object to perform some operations on it.
+In this pattern we are trying to separate some logic needed to work with the specific object outside of the object itself. So we could have many different visitors that do somethings to specific types.
+
+EXAMPLE: 
+    Develop a simple log appender, we will create a visitor that appends different information to the type it visits.

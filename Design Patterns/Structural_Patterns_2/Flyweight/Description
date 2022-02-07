@@ -1,0 +1,2 @@
+=> Flyweight design pattern is commonly used in computer graphics and in video game industry but not as much in enterprise applications.
+=> It allows sharing the state of an heavy object between many instances of some type.

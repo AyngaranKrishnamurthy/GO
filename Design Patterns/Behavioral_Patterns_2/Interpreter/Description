@@ -1,0 +1,9 @@
+EXAMPLE: 
+A reverse polish notation calculator, it's a mathematical notation to make operations where you write the operations first(sum)
+and the the values(3,4), so + 3 4 is equivalent to the more common 3+4 and result is 7.
+
+ACCEPTANCE Criteria:
+1. Create a language that allows making common arithmetic operations. The syntax is sum for sums, mul for multiplications, sub for subtraction and div for division
+2. It must be done using reverse polish notation
+3. The user must be able to write as many operations in a row as they want.
+4. The operation must be performed from left to right.

@@ -1,0 +1,10 @@
+In this example instead of printing text on the console only, we are also going to paint objects on a file.
+In this case we will have two strategies: console and file. But the user of the library won't have to deal with the complexity behind it.
+The key feature is that the caller doesn't know how the underlying library is working and he just knows the information available on defined strategy.
+
+ACCEPTANCE CRITERIA
+    1. Provide a way to show to an user an object(a square) in text or image.
+    2. The user must choose between image or text while launching the app.
+    3. The app must be able to add more visualization strategies (for example: audio).
+    4. If the user selects text the word *Square* must be printed onto the console.
+    5. If the user selects image, an image of white square on black background will be printed onto a file.

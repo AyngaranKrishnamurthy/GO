@@ -1,0 +1,4 @@
+We wil prepare a pizza type, where the core is the pizza and the ingredients are the decorating types.
+We will have a couple of ingredients for our pizza - onion and meat.
+
+Note: A decorator pattern needs to have a common interface and a core type, the on ethat all layers will be built over.

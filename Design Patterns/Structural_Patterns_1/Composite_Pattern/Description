@@ -1,0 +1,8 @@
+It favors composition over inheritance
+
+ACCEPTANCE CRITERIA:
+    1. ​We must have an Athlete struct with a Train method
+    2. We must have a swimmer with a swim method   
+    3. We must have an Animal struct with an Eat method
+    4. We must have a Fish struct with a swim method that is shared with the swammor, and not have inheritance 
+    or hierarchy issues

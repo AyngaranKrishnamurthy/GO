@@ -1,0 +1,10 @@
+We are going to take first steps towards writing our very own library that access *OpenWeatherMaps* service.
+In case if you are not familiar with *OpenWeatherMaps* service, it is an HTTP service that provides you with live information about the
+weather, as well as historical data on it. The HTTPREST API is very easy to use, and will be a good example of how to create a Facade 
+pattern for hiding the complexity of the network behind the REST service.
+
+ACCEPTANCE CRITERIA:
+    1. Provide a single type to access the data. All information retrieved through OpenWeatherMaps service will pass through it.
+    2. Create a way to get weather data from some city of some country.
+    3. Create a way to get weather data from some latitude and longitude posistion.
+    4. Only second and third points should be visisble outside the package and everything else must be hidden.

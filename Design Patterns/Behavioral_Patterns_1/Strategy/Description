@@ -1,0 +1,3 @@
+=> Strategy Paattern uses different algorithms to achieve same functionality.
+=> These algorithms are hidden behind an interface and are interchangeable. All algorithms achieve same functionality but in a different way.
+=> Example: Various sorting algorithms used to achieve same result of sorted values.

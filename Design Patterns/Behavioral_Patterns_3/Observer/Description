@@ -1,0 +1,11 @@
+For Event-Driven Architecture
+
+The idea between Observer pattern is to subscribe to some event that will trigger some behavior on many subscribed types.
+For example imagine a login button, when user clicks the button , the color of button changes and an action is executed. In observer pattern the type that changes color is subscribed to the click of the button.
+	
+EXAMPLE: 
+    We are going to make a Publisher struct, which is the one that triggers an event so it must accept new observers and remove them if necessary. When the Publisher event is triggered it must notify all its observers about the new event and the data associated.
+
+ACCEPTANCE CRITERIA:
+	1. We must create a publisher with a NotifyObservers method that accepts a message as an argument and triggers a notify method to notify all the subscribed observers along with the message.
+	2. We must have a method to add new subscribers to the Publisher.
